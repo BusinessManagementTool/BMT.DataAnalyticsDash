@@ -5,7 +5,6 @@ from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
 
-
 # see https://plotly.com/python/px-arguments/ for more options
 df = pd.DataFrame({
     "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
@@ -14,8 +13,9 @@ df = pd.DataFrame({
 })
 
 
+# This is to create dash application inside flask
 def create_dash_application(flask_app):
-    dash_app = dash.Dash(server=flask_app,name = "Dashboard", url_base_pathname="/dash/")
+    dash_app = dash.Dash(server=flask_app, name="Dashboard", url_base_pathname="/dash/")
     fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
 
     dash_app.layout = html.Div(children=[

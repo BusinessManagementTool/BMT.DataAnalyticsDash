@@ -1,15 +1,8 @@
-import flask
 from flask import Flask
+from DashAnalytics import SaleAnalytics
 
-from SaleAnalysisEngine import SaleAnalysisEngine
-from DashAnalytics import create_dash_application
 app = Flask(__name__)
-create_dash_application(app)
-
-
-@app.route("/GetPerDaySaleChart")
-def getPerDaySaleChart():
-    SaleAnalysisEngine().perMonthSaleData()
+SaleAnalytics().create_dash_application(app)
 
 
 @app.route("/")
